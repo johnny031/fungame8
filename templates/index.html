@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <title>fungame1</title>
+  </head>
+  <style>
+    h1,
+    h2,
+    h4,
+    #input {
+      font-family: Microsoft JhengHei;
+      font-weight: bold;
+      margin: 20px;
+    }
+    h1 {
+      font-weight: bolder;
+      text-shadow: 2px 2px 0px #ffffff, 5px 4px 0px rgba(0, 0, 0, 0.15);
+      color: #333333;
+      white-space: nowrap;
+    }
+    h2 {
+      word-break: keep-all;
+      text-shadow: 1px 0px 1px #cccccc, 0px 1px 1px #eeeeee, 2px 1px 1px #cccccc,
+        1px 2px 1px #eeeeee, 3px 2px 1px #cccccc, 2px 3px 1px #eeeeee,
+        4px 3px 1px #cccccc, 3px 4px 1px #eeeeee, 5px 4px 1px #cccccc,
+        4px 5px 1px #eeeeee, 6px 5px 1px #cccccc,
+        2px 2px 2px rgba(28, 110, 164, 0);
+      color: #121212;
+    }
+    h4 {
+      line-height: 40px;
+      font-size: 26px;
+    }
+    li {
+      padding: 10px 0;
+    }
+    body {
+      background: url(/static/img/background.jpg) no-repeat fixed;
+      background-size: 100% 110%;
+    }
+    #input {
+      margin-bottom: 50px;
+    }
+    @media only screen and (max-width: 760px) {
+      h4 {
+        font-size: 20px;
+      }
+      ol {
+        padding-left: 20px;
+      }
+    }
+  </style>
+  <body>
+    <h1>找回你的小花</h1>
+    <h2>遊戲規則：</h2>
+    <h4>
+      <ol>
+        <li>分成藍紅兩隊，各派出一位出題者給提示</li>
+        <li>
+          兩隊出題者輪流給提示讓隊員猜，藍隊先，最先猜完該顏色所有小花的隊伍獲勝
+        </li>
+        <li>
+          給的提示為一個詞語和一個數字，如「食物，4」，意即所有詞語中和食物有關的，共有四個
+        </li>
+        <li>
+          一次猜一個，猜對可繼續猜，最多只能猜出題者給的數字+1個，中途可隨時放棄
+        </li>
+        <li>猜錯立即換對方回合，有以下三種情況</li>
+        <li>
+          若猜錯到屎，沒事；猜到對方顏色小花，即幫對方找到一多小花；若猜到炸彈，該隊失敗，遊戲結束
+        </li>
+        <li>若要再玩一次，按上一頁回到此頁後重新整理，再開始</li>
+      </ol>
+    </h4>
+    <form id="f" action="{{ url_for('go') }}">
+      <input id="input" type="submit" value="開始玩!" />
+    </form>
+  </body>
+  <script>
+    var w = {{w | tojson}};
+
+    for (let i=0; i<27; i++) {
+        var input = document.createElement("input");
+        input.type = "text";
+        input.value = w[i];
+        input.name = "w";
+        input.style.display = "none";
+        document.querySelector("#f").appendChild(input);
+    }
+
+    function shuffle(a) {
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+    for(let i=0;i<3;i++){
+      let answer = [0,0,0,1,1,1,1,1,1];
+      shuffle(answer);
+      for (let j=0; j<9; j++) {
+          var input = document.createElement("input");
+          input.type = "text";
+          input.value = answer[j];
+          input.name = "a" + i;
+          input.style.display = "none";
+          document.querySelector("#f").appendChild(input);
+      }
+    }
+  </script>
+</html>

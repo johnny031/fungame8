@@ -1,0 +1,99 @@
+body {
+  background-color: rgb(5, 5, 88);
+}
+h3,
+h1,
+#answer,
+#change_team {
+  color: rgb(194, 194, 194);
+  font-family: "Microsoft JhengHei";
+  font-weight: bold;
+}
+#next_round {
+  font-family: "Microsoft JhengHei";
+  font-weight: bold;
+  background: rgb(223, 223, 223);
+  margin: 10px 0 20px 0;
+}
+#answer,
+#change_team {
+  border: none;
+  background: none;
+  border: 3px solid rgb(194, 194, 194);
+}
+#answer:focus,
+#change_team:focus,
+#next_round:focus {
+  outline-width: 0;
+}
+#answer:hover,
+#change_team:hover {
+  background: rgb(194, 194, 194);
+  color: rgb(5, 5, 88);
+}
+#container {
+  width: 75vw;
+  margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
+}
+.row {
+  padding: 5px 0;
+}
+.board {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.item {
+  width: 23vw;
+  margin: 1vw;
+  border: 10px solid rgb(124, 124, 124);
+  background-color: rgb(202, 202, 202);
+}
+.bomb {
+  background-color: rgb(214, 182, 182);
+}
+.text {
+  font-size: 40px;
+  padding: 5vh 0;
+  white-space: nowrap;
+  font-family: "Microsoft JhengHei";
+  font-weight: bold;
+}
+@media only screen and (max-width: 955px) {
+  #container {
+    width: 90vw;
+  }
+  .item {
+    width: 28vw;
+    margin: 1vw;
+  }
+}
+@media only screen and (max-width: 760px) {
+  .item {
+    border: 8px solid rgb(124, 124, 124);
+  }
+  .text {
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  h1 {
+    font-size: 33px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  #container {
+    width: 96vw;
+  }
+  .item {
+    width: 30vw;
+    margin: 1vw;
+    border: 7px solid rgb(124, 124, 124);
+  }
+  .text {
+    font-size: 20px;
+  }
+}
