@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
       $("#next_round").attr("disabled", true);
     }
   });
-  $("#answer").on("click", function(){
+  $("#answer").on("dblclick", function(){
     if(round !== 3){
       $("#next_round").prop("disabled", function(i, v) { return !v; });
     }
@@ -69,9 +69,9 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
   });
-  $("body").on("click", ".bomb_a", function(){
+  $("body").on("dblclick", ".bomb_a", function(){
     if(!$(this).hasClass("disabled")){
-      $(this).parent(".item").attr("style", "background-color: rgb(107, 88, 5); border: 10px solid black;");
+      $(this).parent(".item").attr("style", "background-color: rgb(107, 88, 5); border-color: black;");
       $(this).addClass("disabled");
       if(current_team){
         a_score--;
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   $("body").on("dblclick", ".right_a", function(){
     if(!$(this).hasClass("disabled")){
-      $(this).parent(".item").attr("style", "background-color: rgb(14, 209, 235); border: 10px solid rgb(223, 223, 223);");
+      $(this).parent(".item").attr("style", "background-color: rgb(14, 209, 235); border-color: rgb(200, 200, 200);");
       $(this).addClass("disabled");
       check_last++;
       if(current_team){
@@ -108,13 +108,15 @@ document.addEventListener("DOMContentLoaded", function() {
     current_team ? $("#current_team").html("B") : $("#current_team").html("A");
     current_team = !current_team;
   });
-  // $(function() {
-  //   $("#qrcode").qrcode({
-  //     text: window.location.href,
-  //     render: "canvas",
-  //     width: 300,
-  //     height: 300
-  //   });
-  // });
-  
+  $(function() {
+    $("#qrcode").qrcode({
+      text: window.location.href,
+      render: "canvas",
+      width: 300,
+      height: 300
+    });
+  });
+  $("#qrcode_link").on("click", function() {
+    $("#qrcode").slideToggle("slow");
+  });
 });

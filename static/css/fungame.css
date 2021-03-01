@@ -1,6 +1,18 @@
 body {
   background-color: rgb(5, 5, 88);
 }
+#qrcode {
+  width: 310px;
+  height: 310px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  border-radius: 10px;
+  background: white;
+}
+h1 {
+  text-shadow: 1px 1px 2px #000000, 2px 2px 2px #ffffff;
+}
 h3,
 h1,
 #answer,
@@ -38,6 +50,7 @@ h1,
   text-align: center;
 }
 .row {
+  margin: 0;
   padding: 5px 0;
 }
 .board {
@@ -55,8 +68,8 @@ h1,
   background-color: rgb(214, 182, 182);
 }
 .text {
-  font-size: 40px;
-  padding: 5vh 0;
+  font-size: 38px;
+  padding: 4.7vh 0;
   white-space: nowrap;
   font-family: "Microsoft JhengHei";
   font-weight: bold;
