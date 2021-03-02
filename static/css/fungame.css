@@ -20,12 +20,26 @@ h1,
   color: rgb(194, 194, 194);
   font-family: "Microsoft JhengHei";
   font-weight: bold;
+  user-select: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
 }
 #next_round {
   font-family: "Microsoft JhengHei";
   font-weight: bold;
   background: rgb(223, 223, 223);
   margin: 10px 0 20px 0;
+}
+.adjust {
+  width: 0;
+  display: none;
+  border: none;
+  background: none;
+  padding: 0 10px;
+}
+.fas {
+  font-size: 23px;
+  color: rgb(194, 194, 194);
 }
 #answer,
 #change_team {
@@ -38,10 +52,10 @@ h1,
 #next_round:focus {
   outline-width: 0;
 }
-#answer:hover,
-#change_team:hover {
-  background: rgb(194, 194, 194);
-  color: rgb(5, 5, 88);
+.clicked,
+#change_team:active {
+  background: rgb(194, 194, 194) !important;
+  color: rgb(5, 5, 88) !important;
 }
 #container {
   width: 75vw;
@@ -73,6 +87,9 @@ h1,
   white-space: nowrap;
   font-family: "Microsoft JhengHei";
   font-weight: bold;
+  user-select: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
 }
 @media only screen and (max-width: 955px) {
   #container {
@@ -97,6 +114,12 @@ h1,
   }
   h3 {
     font-size: 20px;
+  }
+  .fas {
+    font-size: 16px;
+  }
+  .adjust {
+    padding: 0 5px;
   }
   #container {
     width: 96vw;

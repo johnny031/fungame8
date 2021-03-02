@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
   $("#answer").on("dblclick", function(){
+    $(this).toggleClass("clicked");
     if(round !== 3){
       $("#next_round").prop("disabled", function(i, v) { return !v; });
     }
@@ -71,7 +72,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   $("body").on("dblclick", ".bomb_a", function(){
     if(!$(this).hasClass("disabled")){
-      $(this).parent(".item").attr("style", "background-color: rgb(107, 88, 5); border-color: black;");
+      $(this).parent(".item").attr("style", "background-color: rgb(107, 88, 5); border-color: black; opacity: 0.2");
+      $(this).parent(".item").animate({opacity: "1"}, 600);
       $(this).addClass("disabled");
       if(current_team){
         a_score--;
@@ -86,7 +88,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   $("body").on("dblclick", ".right_a", function(){
     if(!$(this).hasClass("disabled")){
-      $(this).parent(".item").attr("style", "background-color: rgb(14, 209, 235); border-color: rgb(200, 200, 200);");
+      $(this).parent(".item").attr("style", "background-color: rgb(14, 209, 235); border-color: rgb(200, 200, 200); opacity: 0.2");
+      $(this).parent(".item").animate({opacity: "1"}, 800);
       $(this).addClass("disabled");
       check_last++;
       if(current_team){
@@ -107,6 +110,25 @@ document.addEventListener("DOMContentLoaded", function() {
   $("#change_team").on("click", function(){
     current_team ? $("#current_team").html("B") : $("#current_team").html("A");
     current_team = !current_team;
+  });
+  $(".adjust_link").on("click", function(){
+    $(".adjust").fadeToggle("slow");
+  });
+  $(".a_minus").on("click", function(){
+    a_score--;
+    $("#a_score").html(a_score);
+  });
+  $(".b_minus").on("click", function(){
+    b_score--;
+    $("#b_score").html(b_score);
+  });
+  $(".a_plus").on("click", function(){
+    a_score++;
+    $("#a_score").html(a_score);
+  });
+  $(".b_plus").on("click", function(){
+    b_score++;
+    $("#b_score").html(b_score);
   });
   $(function() {
     $("#qrcode").qrcode({

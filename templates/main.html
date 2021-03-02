@@ -9,6 +9,12 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="static/css/fungame.css" />
     <title>fungame8</title>
   </head>
@@ -18,8 +24,8 @@
       <a id="qrcode_link"><h1>踩地雷</h1></a>
       <div class="row">
         <div class="col-6">
-          <h3>A隊：<span id="a_score">0</span> 分</h3>
-          <h3>B隊：<span id="b_score">0</span> 分</h3>
+          <h3><a class="adjust_link">A隊</a>：<a class="adjust a_minus"><i class="fas fa-minus"></i></a><span id="a_score">0</span><a class="adjust a_plus"><i class="fas fa-plus"></i></a> 分</h3>
+          <h3><a class="adjust_link">B隊</a>：<a class="adjust b_minus"><i class="fas fa-minus"></i></a><span id="b_score">0</span><a class="adjust b_plus"><i class="fas fa-plus"></i></a> 分</h3>
         </div>
         <div class="col-6">
           <h3><span id="current_team">A</span>隊回合</h3>
