@@ -24,15 +24,14 @@
       <a id="qrcode_link"><h1>踩地雷</h1></a>
       <div class="row">
         <div class="col-6">
-          <h3><a class="adjust_link">A隊</a>：<a class="adjust a_minus"><i class="fas fa-minus"></i></a><span id="a_score">0</span><a class="adjust a_plus"><i class="fas fa-plus"></i></a> 分</h3>
+          <h3 style="margin-top: 6px;"><a class="adjust_link">A隊</a>：<a class="adjust a_minus"><i class="fas fa-minus"></i></a><span id="a_score">0</span><a class="adjust a_plus"><i class="fas fa-plus"></i></a> 分</h3>
           <h3><a class="adjust_link">B隊</a>：<a class="adjust b_minus"><i class="fas fa-minus"></i></a><span id="b_score">0</span><a class="adjust b_plus"><i class="fas fa-plus"></i></a> 分</h3>
         </div>
         <div class="col-6">
-          <h3><span id="current_team">A</span>隊回合</h3>
           <h3>
-            <button id="answer">答</button>
-            <button id="change_team">換</button>
+            <button id="answer">第 <span id="round_span">1</span> 局</button>
           </h3>
+          <h3><a id="change_team"><span id="current_team">A</span> 隊回合</a></h3>
         </div>
       </div>
       <div id="qrcode" style="display:none;text-align:center"></div>
@@ -95,8 +94,17 @@
   <script type="text/javascript" src="/static/qrcode.js"></script>
   <script>
     var w = {{w | tojson}};
-    var a0 = {{a0 | tojson}};
-    var a1 = {{a1 | tojson}};
-    var a2 = {{a2 | tojson}};
+    var a = {{a0 | tojson}}.map(function(item) {
+      return parseInt(item, 10);
+    });
+    var b = {{a1 | tojson}}.map(function(item) {
+      return parseInt(item, 10);
+    });
+    var c = {{a2 | tojson}}.map(function(item) {
+      return parseInt(item, 10);
+    });
+    var d = {{a3 | tojson}}.map(function(item) {
+      return parseInt(item, 10);
+    });
   </script>
 </html>

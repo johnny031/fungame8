@@ -15,8 +15,7 @@ h1 {
 }
 h3,
 h1,
-#answer,
-#change_team {
+#answer {
   color: rgb(194, 194, 194);
   font-family: "Microsoft JhengHei";
   font-weight: bold;
@@ -41,19 +40,19 @@ h1,
   font-size: 23px;
   color: rgb(194, 194, 194);
 }
-#answer,
-#change_team {
+#current_team {
+  text-shadow: 1px 1px 2px #000000, 2px 1px 2px #ffffff;
+}
+#answer {
   border: none;
   background: none;
   border: 3px solid rgb(194, 194, 194);
 }
 #answer:focus,
-#change_team:focus,
 #next_round:focus {
   outline-width: 0;
 }
-.clicked,
-#change_team:active {
+.clicked {
   background: rgb(194, 194, 194) !important;
   color: rgb(5, 5, 88) !important;
 }

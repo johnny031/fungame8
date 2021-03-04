@@ -3,6 +3,10 @@ let current_team = true; //A
 let a_score = 0;
 let b_score = 0;
 let check_last = 0;
+let a0 = Array.apply(null, Array(9)).map(Number.prototype.valueOf, 1);
+let a1 = Array.apply(null, Array(9)).map(Number.prototype.valueOf, 1);
+let a2 = Array.apply(null, Array(9)).map(Number.prototype.valueOf, 1);
+let a3 = Array.apply(null, Array(9)).map(Number.prototype.valueOf, 1);
 
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
@@ -13,6 +17,20 @@ function shuffle(a) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+  for(let i=0;i<9;i++){
+    if(a.includes(i)){
+      a0[i] = 0;
+    }
+    if(b.includes(i)){
+      a1[i] = 0;
+    }
+    if(c.includes(i)){
+      a2[i] = 0;
+    }
+    if(d.includes(i)){
+      a3[i] = 0;
+    }
+  }
   for(let i=0;i<9;i++){
     if(a0[i] == 0){
       $(".a" + i).addClass("bomb_a");
@@ -32,8 +50,10 @@ document.addEventListener("DOMContentLoaded", function() {
     for(let i=0;i<9;i++){
       if(round === 1){
         var next_answer = a1;
-      } else {
+      } else if (round === 2){
         var next_answer = a2;
+      } else {
+        var next_answer = a3;
       }
       if(next_answer[i] == 0){
         $(".a" + i).addClass("bomb_a");
@@ -41,18 +61,25 @@ document.addEventListener("DOMContentLoaded", function() {
         $(".a" + i).addClass("right_a");
       }
     } 
-    
     for(let i=0;i<9;i++){
       $(".w" + i).html(pictures[w[i + round*9]]);
     }
     round++;
-    if(round === 3) {
+    $("#round_span").html(round);
+    if(round === 4) {
       $("#next_round").attr("disabled", true);
+    }
+    if(round % 2 === 0){
+      current_team = false;
+      $("#current_team").html("B");
+    } else {
+      current_team = true;
+      $("#current_team").html("A");
     }
   });
   $("#answer").on("dblclick", function(){
     $(this).toggleClass("clicked");
-    if(round !== 3){
+    if(round !== 4){
       $("#next_round").prop("disabled", function(i, v) { return !v; });
     }
     for(let i=0;i<9;i++){
@@ -60,13 +87,13 @@ document.addEventListener("DOMContentLoaded", function() {
         var current_answer = a0;
       } else if (round === 2){
         var current_answer = a1;
-      } else {
+      } else if (round === 3){
         var current_answer = a2;
+      } else {
+        var current_answer = a3;
       }
       if(current_answer[i] == 0){
         $(".a" + i).parent(".item").toggleClass("bomb");
-      } else {
-        $(".a" + i).parent(".item").toggleClass("right");
       }
     }
   });

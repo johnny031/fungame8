@@ -36,14 +36,28 @@
     .board {
       padding-top: 10px;
     }
+    @media only screen and (max-width: 576px) {
+      h1 {
+        font-size: 32px;
+      }
+      h4 {
+        font-size: 18px;
+      }
+    }
   </style>
   <body>
     <div class="container-fluid board">
       <h1>踩地雷</h1>
-      <h4>猜到：
+      <h4>1. 開局首先出題之隊伍，僅能猜「一個詞語」 <br>
+        2. 猜到：
         <div>➤ 引線：+ 1 分</div>
         <div>➤ 地雷：− 1 分</div>
         <div>➤ 最後一條引線：+ 3 分</div>
+        3. 指引：
+        <div>➤ 點擊「A隊」：調分數</div>  
+        <div>➤ 雙擊「第1局」：看答案</div>
+        <div>➤ 點擊「踩地雷」：QRcode</div>            
+        <div>➤ 點擊「A隊回合」：切換回合</div>
       </h4>
       <form id="f" action="{{ url_for('go') }}">
         <input id="input" type="submit" value="開始玩!" />
@@ -53,7 +67,7 @@
   <script>
     var w = {{w | tojson}};
 
-    for (let i=0; i<27; i++) {
+    for (let i=0; i<36; i++) {
         var input = document.createElement("input");
         input.type = "text";
         input.value = w[i];
@@ -69,14 +83,25 @@
       }
       return a;
     }
-    for(let i=0;i<3;i++){
-      let answer = [0,0,0,1,1,1,1,1,1];
+    for(let i=0;i<4;i++){
+      let answer = [];
+      for(let i=0;i<9;i++){
+        answer.push(i);
+      }
       shuffle(answer);
-      for (let j=0; j<9; j++) {
+      for (let j=0; j<3; j++) {
           var input = document.createElement("input");
           input.type = "text";
           input.value = answer[j];
-          input.name = "a" + i;
+          if(i === 0){
+            input.name = "a";
+          } else if (i===1){
+            input.name = "b";
+          } else if (i===2) {
+            input.name = "c";
+          } else {
+            input.name = "d";
+          }
           input.style.display = "none";
           document.querySelector("#f").appendChild(input);
       }
